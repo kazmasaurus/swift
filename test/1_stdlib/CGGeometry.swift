@@ -286,6 +286,22 @@ print_(transform, "named ints")
 // CHECK-NEXT: named doubles 1.0 0.0 0.0 2.0 0.0 0.0
 // CHECK-NEXT: named ints 1.0 0.0 0.0 2.0 0.0 0.0
 
+transform = CGAffineTransform(translationx: 1.25, ty: 2.25)
+print_(transform, "named float literals")
+transform = CGAffineTransform(translationx: 1, ty: 2)
+print_(transform, "named int literals")
+transform = CGAffineTransform(translationx: cgfloat1, ty: cgfloat2)
+print_(transform, "named cgfloats")
+transform = CGAffineTransform(translationx: double1, ty: double2)
+print_(transform, "named doubles")
+transform = CGAffineTransform(translationx: int1, ty: int2)
+print_(transform, "named ints")
+// CHECK-NEXT: named float literals 1.0 0.0 0.0 1.0 1.25 2.25
+// CHECK-NEXT: named int literals 1.0 0.0 0.0 1.0 1.0 2.0
+// CHECK-NEXT: named cgfloats 1.0 0.0 0.0 1.0 1.0 2.0
+// CHECK-NEXT: named doubles 1.0 0.0 0.0 1.0 1.0 2.0
+// CHECK-NEXT: named ints 1.0 0.0 0.0 1.0 1.0 2.0
+
 assert(transform == transform)
 assert(transform != CGAffineTransform.identity)
 assert(!transform.isIdentity)
