@@ -458,6 +458,21 @@ public extension CGAffineTransform {
     self.init(translationx: CGFloat(tx), ty: CGFloat(ty))
   }
 
+  @_transparent // @fragile
+  init(rotation angle: CGFloat) {
+    self.init(a: cos(angle), b: sin(angle), c: -sin(angle), d: cos(angle), tx: 0, ty: 0)
+  }
+
+  @_transparent // @fragile
+  init(rotation angle: Double) {
+    self.init(rotation: CGFloat(angle))
+  }
+
+  @_transparent // @fragile
+  init(rotation angle: Int) {
+    self.init(rotation: CGFloat(angle))
+  }
+
   var isIdentity: Bool {
     @_transparent // @fragile
     get { return CGAffineTransformIsIdentity(self) }

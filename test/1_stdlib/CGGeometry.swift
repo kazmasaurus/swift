@@ -302,6 +302,22 @@ print_(transform, "named ints")
 // CHECK-NEXT: named doubles 1.0 0.0 0.0 1.0 1.0 2.0
 // CHECK-NEXT: named ints 1.0 0.0 0.0 1.0 1.0 2.0
 
+transform = CGAffineTransform(rotation: 1.25)
+print_(transform, "named float literal")
+transform = CGAffineTransform(rotation: 1)
+print_(transform, "named int literal")
+transform = CGAffineTransform(rotation: cgfloat1)
+print_(transform, "named cgfloat")
+transform = CGAffineTransform(rotation: double1)
+print_(transform, "named double")
+transform = CGAffineTransform(rotation: int1)
+print_(transform, "named int")
+// CHECK-NEXT: named float literal 0.315322362395269 0.948984619355586 -0.948984619355586 0.315322362395269 0.0 0.0
+// CHECK-NEXT: named int literal 0.54030230586814 0.841470984807897 -0.841470984807897 0.54030230586814 0.0 0.0
+// CHECK-NEXT: named cgfloat 0.54030230586814 0.841470984807897 -0.841470984807897 0.54030230586814 0.0 0.0
+// CHECK-NEXT: named double 0.54030230586814 0.841470984807897 -0.841470984807897 0.54030230586814 0.0 0.0
+// CHECK-NEXT: named int 0.54030230586814 0.841470984807897 -0.841470984807897 0.54030230586814 0.0 0.0
+
 assert(transform == transform)
 assert(transform != CGAffineTransform.identity)
 assert(!transform.isIdentity)
