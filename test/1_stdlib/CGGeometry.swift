@@ -20,20 +20,30 @@ func print_(r: CGRect, _ prefix: String) {
   print("\(prefix) \(r.origin.x) \(r.origin.y) \(r.size.width) \(r.size.height)")
 }
 
+func print_(r: CGAffineTransform, _ prefix: String) {
+  print("\(prefix) \(r.a) \(r.b) \(r.c) \(r.d) \(r.tx) \(r.ty)")
+}
+
 let int1: Int = 1
 let int2: Int = 2
 let int3: Int = 3
 let int4: Int = 4
+let int5: Int = 5
+let int6: Int = 6
 
 let cgfloat1: CGFloat = 1
 let cgfloat2: CGFloat = 2
 let cgfloat3: CGFloat = 3
 let cgfloat4: CGFloat = 4
+let cgfloat5: CGFloat = 5
+let cgfloat6: CGFloat = 6
 
 let double1: Double = 1
 let double2: Double = 2
 let double3: Double = 3
 let double4: Double = 4
+let double5: Double = 5
+let double6: Double = 6
 
 print("You may begin.")
 // CHECK: You may begin.
@@ -240,3 +250,22 @@ print_(slice, "slice")
 print_(remainder, "remainder")
 // CHECK-NEXT: slice 11.25 22.25 5.0 44.25
 // CHECK-NEXT: remainder 16.25 22.25 28.25 44.25
+
+
+var transform: CGAffineTransform
+
+transform = CGAffineTransform(a: 1.25, b: 2.25, c: 3.25, d: 4.25, tx: 5.25, ty: 6.25)
+print_(transform, "named float literals")
+transform = CGAffineTransform(a: 1, b: 2, c: 3, d: 4, tx: 5, ty: 6)
+print_(transform, "named int literals")
+transform = CGAffineTransform(a: cgfloat1, b: cgfloat2, c: cgfloat3, d: cgfloat4, tx: cgfloat5, ty: cgfloat6)
+print_(transform, "named cgfloats")
+transform = CGAffineTransform(a: double1, b: double2, c: double3, d: double4, tx: double5, ty: double6)
+print_(transform, "named doubles")
+transform = CGAffineTransform(a: int1, b: int2, c: int3, d: int4, tx: int5, ty: int6)
+print_(transform, "named ints")
+// CHECK-NEXT: named float literals 1.25 2.25 3.25 4.25 5.25 6.25
+// CHECK-NEXT: named int literals 1.0 2.0 3.0 4.0 5.0 6.0
+// CHECK-NEXT: named cgfloats 1.0 2.0 3.0 4.0 5.0 6.0
+// CHECK-NEXT: named doubles 1.0 2.0 3.0 4.0 5.0 6.0
+// CHECK-NEXT: named ints 1.0 2.0 3.0 4.0 5.0 6.0

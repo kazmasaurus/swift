@@ -412,6 +412,18 @@ public func == (lhs: CGRect, rhs: CGRect) -> Bool {
   return CGRectEqualToRect(lhs, rhs)
 }
 
+public extension CGAffineTransform {
+  @_transparent // @fragile
+  init(a: Int, b: Int, c: Int, d: Int, tx: Int, ty: Int) {
+    self.init(a: CGFloat(a), b: CGFloat(b), c: CGFloat(c), d: CGFloat(d), tx: CGFloat(tx), ty: CGFloat(ty))
+  }
+
+  @_transparent // @fragile
+  init(a: Double, b: Double, c: Double, d: Double, tx: Double, ty: Double) {
+    self.init(a: CGFloat(a), b: CGFloat(b), c: CGFloat(c), d: CGFloat(d), tx: CGFloat(tx), ty: CGFloat(ty))
+  }
+}
+
 // Overlay the C names of these constants with transparent definitions. The
 // C constants are opaque extern globals for no good reason.
 
