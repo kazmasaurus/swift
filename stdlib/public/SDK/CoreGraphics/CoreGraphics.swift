@@ -429,17 +429,17 @@ public extension CGAffineTransform {
   }
 
   @_transparent // @fragile
-  public init(scalex sx: CGFloat, sy: CGFloat) {
+  init(scalex sx: CGFloat, sy: CGFloat) {
     self.init(a: sx, b: 0, c: 0, d: sy, tx: 0, ty: 0)
   }
 
   @_transparent // @fragile
-  public init(scalex sx: Double, sy: Double) {
+  init(scalex sx: Double, sy: Double) {
     self.init(scalex: CGFloat(sx), sy: CGFloat(sy))
   }
 
   @_transparent // @fragile
-  public init(scalex sx: Int, sy: Int) {
+  init(scalex sx: Int, sy: Int) {
     self.init(scalex: CGFloat(sx), sy: CGFloat(sy))
   }
 
