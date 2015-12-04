@@ -428,6 +428,21 @@ public extension CGAffineTransform {
     self.init(a: CGFloat(a), b: CGFloat(b), c: CGFloat(c), d: CGFloat(d), tx: CGFloat(tx), ty: CGFloat(ty))
   }
 
+  @_transparent // @fragile
+  public init(scalex sx: CGFloat, sy: CGFloat) {
+    self.init(a: sx, b: 0, c: 0, d: sy, tx: 0, ty: 0)
+  }
+
+  @_transparent // @fragile
+  public init(scalex sx: Double, sy: Double) {
+    self.init(scalex: CGFloat(sx), sy: CGFloat(sy))
+  }
+
+  @_transparent // @fragile
+  public init(scalex sx: Int, sy: Int) {
+    self.init(scalex: CGFloat(sx), sy: CGFloat(sy))
+  }
+
   var isIdentity: Bool {
     @_transparent // @fragile
     get { return CGAffineTransformIsIdentity(self) }

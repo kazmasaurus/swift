@@ -270,7 +270,24 @@ print_(transform, "named ints")
 // CHECK-NEXT: named doubles 1.0 2.0 3.0 4.0 5.0 6.0
 // CHECK-NEXT: named ints 1.0 2.0 3.0 4.0 5.0 6.0
 
+transform = CGAffineTransform(scalex: 1.25, sy: 2.25)
+print_(transform, "named float literals")
+transform = CGAffineTransform(scalex: 1, sy: 2)
+print_(transform, "named int literals")
+transform = CGAffineTransform(scalex: cgfloat1, sy: cgfloat2)
+print_(transform, "named cgfloats")
+transform = CGAffineTransform(scalex: double1, sy: double2)
+print_(transform, "named doubles")
+transform = CGAffineTransform(scalex: int1, sy: int2)
+print_(transform, "named ints")
+// CHECK-NEXT: named float literals 1.25 0.0 0.0 2.25 0.0 0.0
+// CHECK-NEXT: named int literals 1.0 0.0 0.0 2.0 0.0 0.0
+// CHECK-NEXT: named cgfloats 1.0 0.0 0.0 2.0 0.0 0.0
+// CHECK-NEXT: named doubles 1.0 0.0 0.0 2.0 0.0 0.0
+// CHECK-NEXT: named ints 1.0 0.0 0.0 2.0 0.0 0.0
+
 assert(transform == transform)
 assert(transform != CGAffineTransform.identity)
 assert(!transform.isIdentity)
 assert(CGAffineTransform.identity.isIdentity)
+
