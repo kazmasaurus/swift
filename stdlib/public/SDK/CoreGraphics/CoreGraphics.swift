@@ -477,6 +477,17 @@ public extension CGAffineTransform {
     @_transparent // @fragile
     get { return CGAffineTransformIsIdentity(self) }
   }
+
+  @_transparent // @fragile
+  @warn_unused_result(mutable_variant="scaleInPlace")
+  func scaledBy(sx sx: CGFloat, sy: CGFloat) -> CGAffineTransform {
+    return CGAffineTransformScale(self, sx, sy)
+  }
+
+  @_transparent // @fragile
+  mutating func scaleInPlace(sx sx: CGFloat, sy: CGFloat) {
+    self = scaledBy(sx: sx, sy: sy)
+  }
 }
 
 extension CGAffineTransform : Equatable {}

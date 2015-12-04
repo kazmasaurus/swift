@@ -323,3 +323,9 @@ assert(transform != CGAffineTransform.identity)
 assert(!transform.isIdentity)
 assert(CGAffineTransform.identity.isIdentity)
 
+transform = CGAffineTransform(a: 10.25, b: 11.25, c: 12.25, d: 13.25, tx: 14.25, ty: 15.25)
+print_(transform.scaledBy(sx: 2, sy: -3), "scaledBy")
+// CHECK-NEXT: scaledBy 20.5 22.5 -36.75 -39.75 14.25 15.25
+transform.scaleInPlace(sx: 2, sy: -3)
+print_(transform, "scaleInPlace")
+// CHECK-NEXT: scaleInPlace 20.5 22.5 -36.75 -39.75 14.25 15.25
