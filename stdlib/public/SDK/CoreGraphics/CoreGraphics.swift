@@ -413,6 +413,11 @@ public func == (lhs: CGRect, rhs: CGRect) -> Bool {
 }
 
 public extension CGAffineTransform {
+  static var identity: CGAffineTransform {
+    @_transparent // @fragile
+    get { return CGAffineTransform(a: 1, b: 0, c: 0, d: 1, tx: 0, ty: 0) }
+  }
+
   @_transparent // @fragile
   init(a: Int, b: Int, c: Int, d: Int, tx: Int, ty: Int) {
     self.init(a: CGFloat(a), b: CGFloat(b), c: CGFloat(c), d: CGFloat(d), tx: CGFloat(tx), ty: CGFloat(ty))
@@ -422,6 +427,13 @@ public extension CGAffineTransform {
   init(a: Double, b: Double, c: Double, d: Double, tx: Double, ty: Double) {
     self.init(a: CGFloat(a), b: CGFloat(b), c: CGFloat(c), d: CGFloat(d), tx: CGFloat(tx), ty: CGFloat(ty))
   }
+}
+
+extension CGAffineTransform : Equatable {}
+@_transparent // @fragile
+@warn_unused_result
+public func == (lhs: CGAffineTransform, rhs: CGAffineTransform) -> Bool {
+  return CGAffineTransformEqualToTransform(lhs, rhs)
 }
 
 // Overlay the C names of these constants with transparent definitions. The
