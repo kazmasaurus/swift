@@ -270,4 +270,7 @@ print_(transform, "named ints")
 // CHECK-NEXT: named doubles 1.0 2.0 3.0 4.0 5.0 6.0
 // CHECK-NEXT: named ints 1.0 2.0 3.0 4.0 5.0 6.0
 
+assert(transform == transform)
 assert(transform != CGAffineTransform.identity)
+assert(!transform.isIdentity)
+assert(CGAffineTransform.identity.isIdentity)

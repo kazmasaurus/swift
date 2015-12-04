@@ -427,6 +427,11 @@ public extension CGAffineTransform {
   init(a: Double, b: Double, c: Double, d: Double, tx: Double, ty: Double) {
     self.init(a: CGFloat(a), b: CGFloat(b), c: CGFloat(c), d: CGFloat(d), tx: CGFloat(tx), ty: CGFloat(ty))
   }
+
+  var isIdentity: Bool {
+    @_transparent // @fragile
+    get { return CGAffineTransformIsIdentity(self) }
+  }
 }
 
 extension CGAffineTransform : Equatable {}
