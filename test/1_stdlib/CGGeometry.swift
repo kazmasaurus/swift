@@ -324,6 +324,13 @@ assert(!transform.isIdentity)
 assert(CGAffineTransform.identity.isIdentity)
 
 transform = CGAffineTransform(a: 10.25, b: 11.25, c: 12.25, d: 13.25, tx: 14.25, ty: 15.25)
+print_(transform.inverted, "inverted")
+// CHECK-NEXT: inverted -6.625 5.625 6.125 -5.125 1.0 -2.0
+transform.invertInPlace()
+print_(transform, "invertInPlace")
+// CHECK-NEXT: invertInPlace -6.625 5.625 6.125 -5.125 1.0 -2.0
+
+transform = CGAffineTransform(a: 10.25, b: 11.25, c: 12.25, d: 13.25, tx: 14.25, ty: 15.25)
 print_(transform.scaledBy(sx: 2, sy: -3), "scaledBy")
 // CHECK-NEXT: scaledBy 20.5 22.5 -36.75 -39.75 14.25 15.25
 transform.scaleInPlace(sx: 2, sy: -3)

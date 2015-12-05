@@ -478,6 +478,16 @@ public extension CGAffineTransform {
     get { return CGAffineTransformIsIdentity(self) }
   }
 
+  var inverted: CGAffineTransform {
+    @_transparent // @fragile
+    get { return CGAffineTransformInvert(self) }
+  }
+
+  @_transparent // @fragile
+  mutating func invertInPlace() {
+    self = inverted
+  }
+
   @_transparent // @fragile
   @warn_unused_result(mutable_variant="scaleInPlace")
   func scaledBy(sx sx: CGFloat, sy: CGFloat) -> CGAffineTransform {
