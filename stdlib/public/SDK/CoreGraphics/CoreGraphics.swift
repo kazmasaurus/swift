@@ -520,6 +520,17 @@ public extension CGAffineTransform {
   mutating func rotateInPlace(angle: CGFloat) {
     self = rotatedBy(angle)
   }
+
+  @_transparent // @fragile
+  @warn_unused_result(mutable_variant="concatInPlace")
+  func concat(transform: CGAffineTransform) -> CGAffineTransform {
+    return CGAffineTransformConcat(self, transform)
+  }
+
+  @_transparent // @fragile
+  mutating func concatInPlace(transform: CGAffineTransform) {
+    self = concat(transform)
+  }
 }
 
 extension CGAffineTransform : Equatable {}

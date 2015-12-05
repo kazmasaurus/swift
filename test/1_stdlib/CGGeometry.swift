@@ -350,3 +350,10 @@ print_(transform.rotatedBy(1.25), "rotatedBy")
 transform.rotateInPlace(1.25)
 print_(transform, "rotateInPlace")
 // CHECK-NEXT: rotateInPlace 14.8571158016574 16.1214227834083 -5.86439340905272 -6.49805566601303 14.25 15.25
+
+transform = CGAffineTransform(a: 10.25, b: 11.25, c: 12.25, d: 13.25, tx: 14.25, ty: 15.25)
+print_(transform.concat(transform.inverted), "concat")
+// CHECK-NEXT: concat 1.0 0.0 0.0 1.0 0.0 0.0
+transform.concatInPlace(transform.inverted)
+print_(transform, "concatInPlace")
+// CHECK-NEXT: concatInPlace 1.0 0.0 0.0 1.0 0.0 0.0
