@@ -336,3 +336,10 @@ print_(transform.translatedBy(tx: 2, ty: -3), "translatedBy")
 transform.translateInPlace(tx: 2, ty: -3)
 print_(transform, "translateInPlace")
 // CHECK-NEXT: translateInPlace 10.25 11.25 12.25 13.25 -2.0 -2.0
+
+transform = CGAffineTransform(a: 10.25, b: 11.25, c: 12.25, d: 13.25, tx: 14.25, ty: 15.25)
+print_(transform.rotatedBy(1.25), "rotatedBy")
+// CHECK-NEXT: rotatedBy 14.8571158016574 16.1214227834083 -5.86439340905272 -6.49805566601303 14.25 15.25
+transform.rotateInPlace(1.25)
+print_(transform, "rotateInPlace")
+// CHECK-NEXT: rotateInPlace 14.8571158016574 16.1214227834083 -5.86439340905272 -6.49805566601303 14.25 15.25

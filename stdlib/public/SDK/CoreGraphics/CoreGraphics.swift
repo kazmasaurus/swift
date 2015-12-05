@@ -499,6 +499,17 @@ public extension CGAffineTransform {
   mutating func translateInPlace(tx tx: CGFloat, ty: CGFloat) {
     self = translatedBy(tx: tx, ty: ty)
   }
+
+  @_transparent // @fragile
+  @warn_unused_result(mutable_variant="rotateInPlace")
+  func rotatedBy(angle: CGFloat) -> CGAffineTransform {
+    return CGAffineTransformRotate(self, angle)
+  }
+
+  @_transparent // @fragile
+  mutating func rotateInPlace(angle: CGFloat) {
+    self = rotatedBy(angle)
+  }
 }
 
 extension CGAffineTransform : Equatable {}
