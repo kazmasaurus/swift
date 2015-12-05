@@ -488,6 +488,17 @@ public extension CGAffineTransform {
   mutating func scaleInPlace(sx sx: CGFloat, sy: CGFloat) {
     self = scaledBy(sx: sx, sy: sy)
   }
+
+  @_transparent // @fragile
+  @warn_unused_result(mutable_variant="translateInPlace")
+  func translatedBy(tx tx: CGFloat, ty: CGFloat) -> CGAffineTransform {
+    return CGAffineTransformTranslate(self, tx, ty)
+  }
+
+  @_transparent // @fragile
+  mutating func translateInPlace(tx tx: CGFloat, ty: CGFloat) {
+    self = translatedBy(tx: tx, ty: ty)
+  }
 }
 
 extension CGAffineTransform : Equatable {}
